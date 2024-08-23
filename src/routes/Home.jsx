@@ -3,21 +3,14 @@ import { useEffect, useState } from "react";
 import { url } from "../api/api";
 import ComponentA from "../components/ComponentA";
 import { getData } from "../services/apiRequests";
+import useData from "../contexts/useData";
 
 // const data = await getData(url);
 
 // this is outside the component
 const Home = () => {
-  const [data, setData] = useState(null);
-
-  const fetchData = async () => {
-    const response = await getData(url);
-    setData(response);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // const [data, setData] = useState(null);
+  const { data } = useData();
 
   console.log("Data: ", data);
   // This is inside the component
@@ -27,7 +20,7 @@ const Home = () => {
       <Typography variant="h6" component="h2">
         Home
       </Typography>
-      <ComponentA data={data} setData={setData} />
+      <ComponentA />
     </div>
   );
 };
