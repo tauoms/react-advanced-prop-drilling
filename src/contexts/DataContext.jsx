@@ -11,6 +11,7 @@ export const DataProvider = ({ children }) => {
   const fetchData = async () => {
     const response = await getData(url);
     setData(response);
+    console.log("data fetched in DataContext.jsx");
   };
 
   useEffect(() => {
